@@ -9,8 +9,6 @@
         <VerticalStackLayout
             Padding="30,0"
             Spacing="25">
-            
-
             <Label Text="Resetuj Konto"
                    TextColor="White"
                    BackgroundColor="Teal"
@@ -31,9 +29,8 @@
             <Button Clicked="Button_Clicked"
                     HorizontalOptions="Center"
                     Text="ZATWIEDŹ"/>
-            <Label
-                Text="{Binding Resoult}"/>
-
+            <Label  Text="{Binding Resoult}"
+                    HorizontalOptions="Center"/>
         </VerticalStackLayout>
     </ScrollView>
 
