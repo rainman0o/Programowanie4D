@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Egzamin2023MauiApp.MainPage"
+             x:Name="thisPage"
+             BindingContext="{x:Reference thisPage}">
+    <ScrollView
+        BackgroundColor="LightSteelBlue">
+        <Grid ColumnDefinitions="*,*"
+              RowDefinitions="auto, auto">
+
+            <Label Text="Dane pracownika"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   ZIndex="1"/>
+
+            <Border
+                Grid.Column="0"
+                Grid.Row="0"
+                Stroke="White"
+                StrokeThickness="4"
+                StrokeShape="RoundRectangle 20,20,20,20"
+                Margin="0,10,0,0 ">
+
+                <Grid ColumnDefinitions="auto,*"
+                      ColumnSpacing="20"
+                      RowDefinitions="auto,auto,auto">
+
+                    <Label Text="Imie"
+                           Grid.Row="0"
+                           Grid.Column="0"/>
+                    
+                    <Entry  Grid.Row="0"
+                            Grid.Column="1"
+                            BackgroundColor="White"
+                            Text="{Binding Name}"/>
+
+                    <Label Text="Nazwisko"
+                           Grid.Row="1"
+                           Grid.Column="0"/>            
+
+                    <Entry  Grid.Row="1"
+                            Grid.Column="1"
+                            BackgroundColor="White"
+                            Text="{Binding Surname}"/>
+
+                    <Label Text="Stanowisko"
+                           Grid.Row="2"
+                           Grid.Column="0"/>
+
+                    <Picker ItemsSource="{Binding ListOfProffesions}"
+                            SelectedItem="{Binding SelectedProffesion}"
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            BackgroundColor="White"/>
+
+                </Grid>
+            </Border>
+
+            <Label Text="Generowanie Hasła"
+                   Grid.Column="1"
+                   Grid.Row="0"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Start"
+                   ZIndex="1"/>
+
+            <Border
+                Grid.Column="1"
+                Grid.Row="0"
+                Stroke="White"
+                StrokeThickness="4"
+                StrokeShape="RoundRectangle 20,20,20,20"
+                Margin="0,10,0,0 ">
+
+                <StackLayout>
+                    <Grid ColumnDefinitions="auto, *"
+                          ColumnSpacing="10">
+
+                        <Label Text="Ile znaków?"
+                               Grid.Column="0"/>
+
+                        <Entry Grid.Column="1"
+                               BackgroundColor="White"
+                               Text="{Binding HowMuchCharacters}"/>
+
+                    </Grid>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        
+                        <Grid ColumnDefinitions="auto,*"
+                              RowDefinitions="auto,auto,auto">
+                            <CheckBox IsChecked="{Binding IsCheckSmallLargeLetters}"
+                                      Grid.Column="0"
+                                      Grid.Row="0"
+                                      VerticalOptions="Center"/>
+                            <Label Text="Małe i wielkie litery"
+                                   VerticalTextAlignment="Center"
+                                   Grid.Column="1"
+                                   Grid.Row="0"/>
+
+                            <CheckBox IsChecked="{Binding IsCheckNumbers}"
+                                      Grid.Column="0"
+                                      Grid.Row="1"
+                                      VerticalOptions="Center"/>
+                            <Label Text="Cyfry"
+                                   VerticalTextAlignment="Center"
+                                   Grid.Column="1"
+                                   Grid.Row="1"/>
+
+                            <CheckBox IsChecked="{Binding IsCheckSpecialSigns}"
+                                      Grid.Column="0"
+                                      Grid.Row="2"
+                                      VerticalOptions="Center"/>
+                            <Label Text="Znaki Specjalne"
+                                   VerticalTextAlignment="Center"
+                                   Grid.Column="1"
+                                   Grid.Row="2"/>
+                        </Grid>
+          
+                    </StackLayout>
+                    
+                    <Button Text="Generuj hasło"
+                            HorizontalOptions="Center"
+                            Clicked="GeneratePassword"
+                            BackgroundColor="SteelBlue"/>
+                </StackLayout>
+                
+            </Border>
+
+            <Button Text="Zatwierdz"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Center"
+                    MinimumWidthRequest="200"
+                    Clicked="Confirm"
+                    BackgroundColor="SteelBlue"/>
+        </Grid>
+    </ScrollView>
+</ContentPage>
