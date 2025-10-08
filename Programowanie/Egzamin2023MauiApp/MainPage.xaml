@@ -22,7 +22,7 @@
                 Stroke="White"
                 StrokeThickness="4"
                 StrokeShape="RoundRectangle 20,20,20,20"
-                Margin="0,10,0,0 ">
+                Margin="0,10,10,0 ">
 
                 <Grid ColumnDefinitions="auto,*"
                       ColumnSpacing="20"
