@@ -78,7 +78,7 @@
                 <StackLayout>
                     <Grid ColumnDefinitions="auto, *"
                           ColumnSpacing="10"
-                          Padding="20,10,10,10">
+                          Padding="20,20,10,10">
 
                         <Label Text="Ile znaków?"
                                Grid.Column="0"/>
