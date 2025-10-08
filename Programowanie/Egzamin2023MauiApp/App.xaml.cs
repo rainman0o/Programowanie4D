@@ -9,7 +9,9 @@
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+            Window window = new Window(new MainPage());
+            window.Title = "Dodaj pracownika 01234567890";
+            return window;
         }
     }
 }

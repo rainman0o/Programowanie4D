@@ -26,7 +26,8 @@
 
                 <Grid ColumnDefinitions="auto,*"
                       ColumnSpacing="20"
-                      RowDefinitions="auto,auto,auto">
+                      RowDefinitions="auto,auto,auto"
+                      Padding="20,20,10,10">
 
                     <Label Text="Imie"
                            Grid.Row="0"
@@ -76,21 +77,23 @@
 
                 <StackLayout>
                     <Grid ColumnDefinitions="auto, *"
-                          ColumnSpacing="10">
+                          ColumnSpacing="10"
+                          Padding="20,10,10,10">
 
                         <Label Text="Ile znaków?"
                                Grid.Column="0"/>
 
                         <Entry Grid.Column="1"
                                BackgroundColor="White"
-                               Text="{Binding HowMuchCharacters}"/>
+                               Text="{Binding HowManyCharacters}"/>
 
                     </Grid>
                     
                     <StackLayout Orientation="Horizontal">
                         
                         <Grid ColumnDefinitions="auto,*"
-                              RowDefinitions="auto,auto,auto">
+                              RowDefinitions="auto,auto,auto"
+                              Padding="20,10,10,10">
                             <CheckBox IsChecked="{Binding IsCheckSmallLargeLetters}"
                                       Grid.Column="0"
                                       Grid.Row="0"
