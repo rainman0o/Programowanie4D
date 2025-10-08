@@ -139,7 +139,8 @@
                     HorizontalOptions="Center"
                     MinimumWidthRequest="200"
                     Clicked="Confirm"
-                    BackgroundColor="SteelBlue"/>
+                    BackgroundColor="SteelBlue"
+                    Margin="0,20,0,0"/>
         </Grid>
     </ScrollView>
 </ContentPage>

@@ -8,7 +8,14 @@ namespace Egzamin2023MauiApp
         public string Name { get; set; }
         public string Surname { get; set; }
         public string SelectedProffesion { get; set; }
-        public int HowManyCharacters { get; set; }
+
+        private int howManycharcters = 0;
+        public int HowManyCharacters
+        {
+            get { return howManycharcters; }
+            set { howManycharcters = value; OnPropertyChanged(); }
+        }
+
         public bool IsCheckSmallLargeLetters { get; set; } = true;
         public bool IsCheckNumbers { get; set; }
         public bool IsCheckSpecialSigns { get; set; }
