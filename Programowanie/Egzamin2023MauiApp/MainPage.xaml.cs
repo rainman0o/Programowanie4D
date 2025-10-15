@@ -12,7 +12,9 @@ namespace Egzamin2023MauiApp
         private int howManycharcters = 0;
         public int HowManyCharacters
         {
-            get { return howManycharcters; }
+            get { return howManycharcters; },
+            0
+
             set { howManycharcters = value; OnPropertyChanged(); }
         }
 
@@ -31,8 +33,8 @@ namespace Egzamin2023MauiApp
         }
 
         private void Confirm(object sender, EventArgs e)
-        {  
-           DisplayAlert("",$"Dane pracownika: {Name} {Surname} {SelectedProffesion} {passwordResult}","OK");
+        {
+            DisplayAlert("", $"Dane pracownika: {Name} {Surname} {SelectedProffesion} {passwordResult}", "OK");
         }
 
         private void GeneratePassword(object sender, EventArgs e)
@@ -40,42 +42,31 @@ namespace Egzamin2023MauiApp
             List<string> passwordGenerate = new List<string>();
             Random random = new Random();
 
-            if(!IsCheckNumbers && !IsCheckSmallLargeLetters && !IsCheckSpecialSigns)
+
+            if (IsCheckSmallLargeLetters)
             {
-                for (int i = 0; i < HowManyCharacters; i++)
-                {
-                    char randomChar = (char)random.Next('a', 'z' + 1);
-                    passwordGenerate.Add(randomChar.ToString());
-                }
+                char randomChar = (char)random.Next('A', 'Z' + 1);
+                passwordGenerate.Add(randomChar.ToString());
+            }
+            if (IsCheckNumbers)
+            {
+                char randomChar = (char)random.Next('0', '9' + 1);
+                passwordGenerate.Add(randomChar.ToString());
+            }
+            if (IsCheckSpecialSigns)
+            {
+                string specialSigns = "!@#$%^&*()_+-=";
+                char randomChar = specialSigns[random.Next(specialSigns.Length)];
+                passwordGenerate.Add(randomChar.ToString()); ;
             }
 
-            else
+            int remainingCharacters = HowManyCharacters - passwordGenerate.Count();
+            for (int i = 0; i < remainingCharacters; i++)
             {
-                if(IsCheckSmallLargeLetters)
-                {
-                    char randomChar = (char)random.Next('A', 'Z' + 1);
-                    passwordGenerate.Add(randomChar.ToString());
-                }
-                if(IsCheckNumbers)
-                {
-                    char randomChar = (char)random.Next('0', '9' + 1);
-                    passwordGenerate.Add(randomChar.ToString());
-                }
-                if (IsCheckSpecialSigns)
-                {
-                    string specialSigns = "!@#$%^&*()_+-=";
-                    char randomChar = specialSigns[random.Next(specialSigns.Length)];
-                    passwordGenerate.Add(randomChar.ToString());;
-                }
-
-                int remainingCharacters = HowManyCharacters - passwordGenerate.Count();
-                for (int i = 0; i < remainingCharacters; i++)
-                {
-                    char randomChar = (char)random.Next('a', 'z' + 1);
-                    passwordGenerate.Add(randomChar.ToString());
-                }
+                char randomChar = (char)random.Next('a', 'z' + 1);
+                passwordGenerate.Add(randomChar.ToString());
             }
-            
+
             passwordResult = string.Join("", passwordGenerate);
             DisplayAlert("", passwordResult, "OK");
         }

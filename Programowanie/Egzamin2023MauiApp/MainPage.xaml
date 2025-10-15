@@ -60,7 +60,7 @@
                 </Grid>
             </Border>
 
-            <Label Text="Generowanie Hasła"
+            <Label Text="Generowanie hasła"
                    Grid.Column="1"
                    Grid.Row="0"
                    HorizontalOptions="Center"
