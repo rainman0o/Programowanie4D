@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TODOMauiApp.MainPage"
+             x:Name="thisPage"
+             BindingContext="{x:Reference thisPage}"
+             xmlns:converters="clr-namespace:TODOMauiApp.Converters">
+    
+    <ContentPage.Resources>
+        <converters:IsTaskCompleteGreenOrRedColorConverter x:Key="IsTaskCompleteGreenOrRedColorConverter"/>
+    </ContentPage.Resources>
+    
+    <ScrollView>
+        <StackLayout Orientation="Vertical">
+            <CollectionView ItemsSource="{Binding TaskToDos}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Title}" FontSize="20" 
+                                   TextColor="{Binding IsComplete, Converter={x:StaticResource IsTaskCompleteGreenOrRedColorConverter}}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
