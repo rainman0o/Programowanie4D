@@ -18,7 +18,19 @@ namespace Egzamin2024_06MauiApp.Converters
             {
                 case 0:
                     return "question.jpg";
-            default:
+                case 1:
+                    return "k1.jpg";
+                case 2:
+                    return "k2.jpg";
+                case 3:
+                    return "k3.jpg";
+                case 4:
+                    return "k4.jpg";
+                case 5:
+                    return "k5.jpg";
+                case 6:
+                    return "k6.jpg";
+                default:
                     return Binding.DoNothing;
             }
         }

@@ -4,16 +4,77 @@ namespace Egzamin2024_06MauiApp
 {
     public partial class MainPage : ContentPage
     {
+        private int resoultOfThisDraw;
+
+        public int ResoultOfThisDraw
+        {
+            get { return resoultOfThisDraw; }
+            set { resoultOfThisDraw = value; OnPropertyChanged(); }
+        }
+
+        private int totalPoints;
+
+        public int TotalPoints
+        {
+            get { return totalPoints; }
+            set { totalPoints = value; OnPropertyChanged(); }
+        }
+
         public ObservableCollection<int> Cubes { get; set; } = new ObservableCollection<int>();
-        //public ObservableCollection<int> CurrentCubes { get; set; } = new ObservableCollection<int>();
         public MainPage()
         {
-            Cubes.Add(0);
-            Cubes.Add(0);
-            Cubes.Add(0);
-            Cubes.Add(0);
-            Cubes.Add(0);
+            for (int i = 0; i < 5; i++)
+            {
+                Cubes.Add(0);
+            }
+          
             InitializeComponent();
-        }  
+        }
+
+        private void Throw_Cubes(object sender, EventArgs e)
+        {
+            DrawCubesNumbers();
+            ResoultOfThisDraw = CountPointsOfDrawCubes(Cubes);
+            TotalPoints += ResoultOfThisDraw;
+        }
+
+        private void Reset_Points(object sender, EventArgs e)
+        {
+            SetAllCubesToZero(Cubes);
+            ResoultOfThisDraw = 0;
+            TotalPoints = 0;
+        }
+
+        private void DrawCubesNumbers()
+        {
+            Random random = new Random();
+            for (int i = 0; i < Cubes.Count; i++)
+            {
+                Cubes[i] = random.Next(1, 7);
+            }
+        }
+
+        private void SetAllCubesToZero(ObservableCollection<int> cubes)
+        {
+            for (int i = 0; i < Cubes.Count; i++)
+                Cubes[i] = 0;
+        }
+
+        private int CountPointsOfDrawCubes(ObservableCollection<int> cubes)
+        {
+            int points = 0;
+            var groups = cubes.GroupBy(x => x);
+
+            foreach (var group in groups)
+            {
+                if (group.Count() >= 2)
+                {
+                    points += group.Key * group.Count();
+                }
+            }
+            return points;
+        }
     }
 }
+
+

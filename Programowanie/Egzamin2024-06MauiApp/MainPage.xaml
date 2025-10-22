@@ -18,35 +18,43 @@
                    FontSize="Large"
                    Margin="0,9,0,9"
                    />
-            <Button Text="Rzuć koścmi"
+            <Button Text="RZUĆ KOŚĆMI"
                     BackgroundColor="Chocolate"
+                    TextColor="White"
                     HorizontalOptions="Center"
                     Margin="0,9,0,9"
+                    Clicked="Throw_Cubes"
                     />
 
             <HorizontalStackLayout
                 BackgroundColor="White">
-                <CollectionView ItemsSource="{Binding Cubes}">
+                <CollectionView ItemsSource="{Binding Cubes}"
+                                ItemsLayout="HorizontalList">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            
-                            <Image Source="{Binding Converter = {x:StaticResource CubesImage}}"/>
-                           
+                            <Image Source="{Binding Converter = {x:StaticResource CubesImage}}"
+                                   HeightRequest="100"
+                                   Margin="10,5,10,30"/>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </HorizontalStackLayout>
-
-            <Label Text="Wynik tego losowania"
+            <Label Text="{Binding ResoultOfThisDraw, StringFormat='Wynik tego losowania: {0}'}"
                    HorizontalOptions="Center"
+                   TextColor="Black"
                    Margin="0,9,0,9"/>
-            <Label Text="Wynik gry"
+            
+            <Label Text="{Binding TotalPoints, StringFormat='Wynik gry: {0}'}"
                    HorizontalOptions="Center"
+                   TextColor="Black"
                    Margin="0,9,0,9"/>
+            
             <Button Text="RESETUJ WYNIK"
                     BackgroundColor="Chocolate"
+                    TextColor="White"
                     HorizontalOptions="Center"
-                    Margin="0,9,0,9"/>
+                    Margin="0,9,0,9"
+                    Clicked="Reset_Points" />
         </StackLayout>
     </ScrollView>
 
