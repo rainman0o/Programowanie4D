@@ -8,10 +8,26 @@
 
     <ContentPage.Resources>
         <converter:CubesImages x:Key="CubesImage"/>
+        <converter:ConvertAmmountFromStringToInt x:Key="ConvertAmmountFromStringToInt"/>
     </ContentPage.Resources>
+    
     <ScrollView>
+        
         <StackLayout Orientation="Vertical"
                      BackgroundColor="Beige">
+
+            <Entry Placeholder="wprowadz liczbę kości"
+                   BackgroundColor="LightSalmon" 
+                   Text="{Binding AmmountOfCubes, Converter= {x:StaticResource ConvertAmmountFromStringToInt}}"/>
+           
+
+            <Button Clicked="Set_NewCubesAmmount"
+                    Text="ZMIEŃ ILOŚĆ KOŚCI"
+                    BackgroundColor="Chocolate"
+                    TextColor="White"
+                    HorizontalOptions="Center"
+                    Margin="0,9,0,9"/>
+
             <Label Text="Gra w kosci. Autor 12345678901"
                    BackgroundColor="Brown"
                    TextColor="White"
@@ -32,9 +48,12 @@
                                 ItemsLayout="HorizontalList">
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
+                            <StackLayout>
                             <Image Source="{Binding Converter = {x:StaticResource CubesImage}}"
                                    HeightRequest="100"
                                    Margin="10,5,10,30"/>
+                                <Label Text="{Binding}"/>
+                            </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

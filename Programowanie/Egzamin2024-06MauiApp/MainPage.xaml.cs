@@ -20,10 +20,11 @@ namespace Egzamin2024_06MauiApp
             set { totalPoints = value; OnPropertyChanged(); }
         }
 
+        public int AmmountOfCubes { get; set; } = 5;
         public ObservableCollection<int> Cubes { get; set; } = new ObservableCollection<int>();
         public MainPage()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < AmmountOfCubes; i++)
             {
                 Cubes.Add(0);
             }
@@ -35,7 +36,7 @@ namespace Egzamin2024_06MauiApp
         {
             DrawCubesNumbers();
             ResoultOfThisDraw = CountPointsOfDrawCubes(Cubes);
-            TotalPoints += ResoultOfThisDraw;
+            TotalPoints += ResoultOfThisDraw;  
         }
 
         private void Reset_Points(object sender, EventArgs e)
@@ -45,6 +46,19 @@ namespace Egzamin2024_06MauiApp
             TotalPoints = 0;
         }
 
+        private void Set_NewCubesAmmount(object sender, EventArgs e)
+        {
+            FillInHowManyCubes(AmmountOfCubes);
+        }
+
+        private void FillInHowManyCubes(int ammountOfCubes)
+        {
+            Cubes.Clear();
+            for (int i = 0; i < ammountOfCubes; i++)
+            {
+                Cubes.Add(0);
+            }
+        }
         private void DrawCubesNumbers()
         {
             Random random = new Random();
