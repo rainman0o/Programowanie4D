@@ -52,7 +52,9 @@
                             <Image Source="{Binding Converter = {x:StaticResource CubesImage}}"
                                    HeightRequest="100"
                                    Margin="10,5,10,30"/>
-                                <Label Text="{Binding}"/>
+                                <Label Text="{Binding}"
+                                       HorizontalOptions="Center"
+                                       FontSize="Medium"/>
                             </StackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
