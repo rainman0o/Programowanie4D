@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" version="29.2.4">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.2.7">
   <diagram name="Strona-1" id="2fwKh4JCbRqas4NTETFb">
-    <mxGraphModel dx="2852" dy="1570" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" background="#D4E1F5" math="0" shadow="0">
+    <mxGraphModel dx="4753" dy="2617" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2339" pageHeight="3300" background="#D4E1F5" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -479,6 +479,159 @@
             <mxPoint x="410" y="1250" as="sourcePoint" />
             <mxPoint x="610" y="1480" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-1" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="START" vertex="1">
+          <mxGeometry height="80" width="120" x="1160" y="1010" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-2" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-1" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1180" y="1120" as="sourcePoint" />
+            <mxPoint x="1220" y="1170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-3" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" value="wczytaj zmienna&amp;nbsp;&lt;div&gt;int liczbaMinut&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1160" y="1170" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-4" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-3" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1180" y="1120" as="sourcePoint" />
+            <mxPoint x="1220" y="1310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-5" parent="1" style="rhombus;whiteSpace=wrap;html=1;" value="jezeli liczbaMinut &amp;lt; 60" vertex="1">
+          <mxGeometry height="80" width="175" x="1132.5" y="1310" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-6" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-5" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1180" y="1120" as="sourcePoint" />
+            <mxPoint x="1400" y="1350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-7" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" value="wypisz: opłata wynosi 4 zł" vertex="1">
+          <mxGeometry height="80" width="170" x="1390" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-8" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="TAK" vertex="1">
+          <mxGeometry height="30" width="60" x="1320" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-9" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-5" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1180" y="1470" as="sourcePoint" />
+            <mxPoint x="1220" y="1460" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="zmienna oplata = 4" vertex="1">
+          <mxGeometry height="60" width="120" x="1160" y="1460" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="NIE" vertex="1">
+          <mxGeometry height="30" width="60" x="1210" y="1400" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-13" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-11" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1290" y="1530" as="sourcePoint" />
+            <mxPoint x="1220" y="1590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="zmienna int liczbaGodzin =&amp;nbsp;&lt;div&gt;liczbaminut / 60&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="1160" y="1590" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-15" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-14" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1290" y="1730" as="sourcePoint" />
+            <mxPoint x="1220" y="1720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="oplata =&amp;nbsp;&lt;div&gt;oplata + (liczbaGodzin - 1) *2&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="130" x="1160" y="1720" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-17" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-16" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1290" y="1630" as="sourcePoint" />
+            <mxPoint x="1370" y="1900" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-18" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="STOP" vertex="1">
+          <mxGeometry height="80" width="120" x="1350" y="1890" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-19" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-7" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.465;exitY=1.013;exitDx=0;exitDy=0;exitPerimeter=0;" target="Iqkd93P70sX2HotJGmER-18" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1290" y="1630" as="sourcePoint" />
+            <mxPoint x="1340" y="1580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-20" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="START" vertex="1">
+          <mxGeometry height="90" width="120" x="1860" y="1050" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-21" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-20" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1610" y="1300" as="sourcePoint" />
+            <mxPoint x="1920" y="1220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-22" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" value="wczytaj kowtaDoWyplaty" vertex="1">
+          <mxGeometry height="60" width="180" x="1830" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-23" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-22" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1610" y="1300" as="sourcePoint" />
+            <mxPoint x="1920" y="1360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-24" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="zmienna B200 = kwotaDoWyplaty % 200&lt;div&gt;kwotaDoWyplaty = kwotaDoWyplaty % 200&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="1800" y="1360" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="zmienna B100 = kwotaDoWyplaty % 100&lt;div&gt;kwotaDoWyplaty = kwotaDoWyplaty % 100&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="1800" y="1500" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-26" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-24" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="Iqkd93P70sX2HotJGmER-25" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1750" y="1630" as="sourcePoint" />
+            <mxPoint x="1800" y="1580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-27" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="zmienna B50 = kwotaDoWyplaty % 50&lt;div&gt;kwotaDoWyplaty = kwotaDoWyplaty % 50&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="1800" y="1640" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-28" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="zmienna B20 = kwotaDoWyplaty % 20&lt;div&gt;kwotaDoWyplaty = kwotaDoWyplaty % 20&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="1800" y="1790" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-29" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="zmienna B10 = kwotaDoWyplaty % 10&lt;div&gt;kwotaDoWyplaty = kwotaDoWyplaty % 10&amp;nbsp;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="1800" y="1920" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-30" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-25" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="Iqkd93P70sX2HotJGmER-27" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1770" y="1720" as="sourcePoint" />
+            <mxPoint x="1820" y="1670" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-31" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-27" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="Iqkd93P70sX2HotJGmER-28" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1930" y="1720" as="sourcePoint" />
+            <mxPoint x="1930" y="1800" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-32" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-28" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="Iqkd93P70sX2HotJGmER-29" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1960" y="1890" as="sourcePoint" />
+            <mxPoint x="1960" y="1970" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-34" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-29" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1930" y="2020" as="sourcePoint" />
+            <mxPoint x="1920" y="2060" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-35" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" value="Wypisz B200, B100,B50&lt;div&gt;B20, B10&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="180" x="1830" y="2060" as="geometry" />
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-36" edge="1" parent="1" source="Iqkd93P70sX2HotJGmER-35" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="1930" y="2020" as="sourcePoint" />
+            <mxPoint x="1920" y="2190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Iqkd93P70sX2HotJGmER-37" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="STOP" vertex="1">
+          <mxGeometry height="80" width="120" x="1860" y="2190" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
