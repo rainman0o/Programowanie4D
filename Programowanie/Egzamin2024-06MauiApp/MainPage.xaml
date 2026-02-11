@@ -3,9 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Egzamin2024_06MauiApp.MainPage"
              x:Name="thisPage"
-             BindingContext="{x:Reference thisPage}"
-             xmlns:converter ="clr-namespace:Egzamin2024_06MauiApp.Converters">
-
+             xmlns:converter ="clr-namespace:Egzamin2024_06MauiApp.Converters"
+             xmlns:local ="clr-namespace:Egzamin2024_06MauiApp">
+    <ContentPage.BindingContext>
+        <local:MainViewModel/>
+    </ContentPage.BindingContext>
+    
     <ContentPage.Resources>
         <converter:CubesImages x:Key="CubesImage"/>
         <converter:ConvertAmmountFromStringToInt x:Key="ConvertAmmountFromStringToInt"/>
@@ -19,9 +22,9 @@
             <Entry Placeholder="wprowadz liczbę kości"
                    BackgroundColor="LightSalmon" 
                    Text="{Binding AmmountOfCubes, Converter= {x:StaticResource ConvertAmmountFromStringToInt}}"/>
-           
 
-            <Button Clicked="Set_NewCubesAmmount"
+
+            <Button Command ="{Binding Set_NewCubesAmmount}"
                     Text="ZMIEŃ ILOŚĆ KOŚCI"
                     BackgroundColor="Chocolate"
                     TextColor="White"
@@ -39,7 +42,7 @@
                     TextColor="White"
                     HorizontalOptions="Center"
                     Margin="0,9,0,9"
-                    Clicked="Throw_Cubes"
+                    Command="{Binding Throw_Cubes}"
                     />
 
             <HorizontalStackLayout
@@ -75,7 +78,7 @@
                     TextColor="White"
                     HorizontalOptions="Center"
                     Margin="0,9,0,9"
-                    Clicked="Reset_Points" />
+                    Command="{Binding Reset_Points}" />
         </StackLayout>
     </ScrollView>
 
