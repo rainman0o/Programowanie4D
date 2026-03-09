@@ -70,8 +70,27 @@ foreach (Person person in peopleWithYearMore)
 Console.WriteLine("\nUsuwanie osób starszych niż 80lat");
 peopleReposytory.DeletePersonsOlderThan80();
 List<Person> peopleWithout80OrOlder = peopleReposytory.GetAllPeople();
-Console.WriteLine("Lista wszystkich osób posortowanych po imieniu i nazwisku");
 foreach (Person person in peopleWithout80OrOlder)
+{
+    Console.WriteLine($"{person.Id} {person.Name}  {person.Surname} lat {person.Age}");
+}
+
+Console.WriteLine("\n Najstarsza osoba ze zmienionym nazwiskiem na \"Najstarszy\"");
+Person oldestPerson = peopleReposytory.GetOldestPersonAndChangeSurname();
+Console.WriteLine($"{oldestPerson.Id} {oldestPerson.Name}  {oldestPerson.Surname} lat {oldestPerson.Age}");
+
+//Console.WriteLine("\nosób młodszych niż średni wiek");
+//peopleReposytory.DeletePeopleYoungerThanAvgAge();
+//List<Person> peopleWithoutYoungerThanAvg = peopleReposytory.GetAllPeople();
+//foreach (Person person in peopleWithoutYoungerThanAvg)
+//{
+//    Console.WriteLine($"{person.Id} {person.Name}  {person.Surname} lat {person.Age}");
+//}
+
+Console.WriteLine("\nImiona z dużej litery");
+peopleReposytory.AllNamesToUpperCase();
+List<Person> peopleWithToUpperCaseNames = peopleReposytory.GetAllPeople();
+foreach (Person person in peopleWithToUpperCaseNames)
 {
     Console.WriteLine($"{person.Id} {person.Name}  {person.Surname} lat {person.Age}");
 }

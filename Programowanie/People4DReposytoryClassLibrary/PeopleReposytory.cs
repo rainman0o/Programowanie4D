@@ -136,5 +136,36 @@ namespace People4DReposytoryClassLibrary
                 context.SaveChanges();
             }
         }
+
+         //ZnajdŸ najstarsz¹ osobê i zmieñ jej nazwisko na „Najstarszy”.
+
+        public Person GetOldestPersonAndChangeSurname()
+        {
+            Person oldestPerson =  context.People.OrderByDescending(p => p.Age).FirstOrDefault();
+            oldestPerson.Surname = "Najstarszy";
+            context.SaveChanges();
+            return oldestPerson;
+        }
+
+        public void DeletePeopleYoungerThanAvgAge()
+        {
+            var averageAge = context.People.Average(p => p.Age);
+            List<Person> people = context.People.Where(p => p.Age < averageAge).ToList();
+
+            if (people != null)
+            {
+                context.People.RemoveRange(people);
+                context.SaveChanges();
+            }
+        }
+
+        public void AllNamesToUpperCase()
+        {
+            foreach (Person person in context.People)
+            {
+                person.Name = person.Name.ToUpper();
+            }
+            context.SaveChanges();
+        }
     }
 }
