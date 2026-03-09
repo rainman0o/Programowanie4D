@@ -87,10 +87,10 @@ Console.WriteLine($"{oldestPerson.Id} {oldestPerson.Name}  {oldestPerson.Surname
 //    Console.WriteLine($"{person.Id} {person.Name}  {person.Surname} lat {person.Age}");
 //}
 
-Console.WriteLine("\nImiona z dużej litery");
-peopleReposytory.AllNamesToUpperCase();
-List<Person> peopleWithToUpperCaseNames = peopleReposytory.GetAllPeople();
-foreach (Person person in peopleWithToUpperCaseNames)
-{
-    Console.WriteLine($"{person.Id} {person.Name}  {person.Surname} lat {person.Age}");
-}
+//Console.WriteLine("\nImiona z dużej litery");
+//peopleReposytory.AllNamesToUpperCase();
+//List<Person> peopleWithToUpperCaseNames = peopleReposytory.GetAllPeople();
+//foreach (Person person in peopleWithToUpperCaseNames)
+//{
+//    Console.WriteLine($"{person.Id} {person.Name}  {person.Surname} lat {person.Age}");
+//}

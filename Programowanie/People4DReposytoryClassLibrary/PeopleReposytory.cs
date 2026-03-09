@@ -125,19 +125,11 @@ namespace People4DReposytoryClassLibrary
         public void DeletePersonsOlderThan80()
         {
             List<Person> people = context.People.Where(p => p.Age > 80).ToList();
+            context.People.RemoveRange(people);
+            context.SaveChanges();
 
-            if (people != null)
-            {
-                foreach (Person person in people)
-                {
-                    context.People.Remove(person);
-                }
-
-                context.SaveChanges();
-            }
+            //context.People.Where(p => p.Age > 80).ExecuteDelete();
         }
-
-         //ZnajdŸ najstarsz¹ osobê i zmieñ jej nazwisko na „Najstarszy”.
 
         public Person GetOldestPersonAndChangeSurname()
         {
@@ -157,10 +149,13 @@ namespace People4DReposytoryClassLibrary
                 context.People.RemoveRange(people);
                 context.SaveChanges();
             }
+            //var averageAge = context.People.Average(p => p.Age);
+            //context.People.Where(p => p.Age < averageAge).ExecuteDelete();
         }
 
         public void AllNamesToUpperCase()
         {
+            //context.People.ToList().ForEach(p => p.Name = p.Name.ToUpper());
             foreach (Person person in context.People)
             {
                 person.Name = person.Name.ToUpper();
