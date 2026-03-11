@@ -162,5 +162,14 @@ namespace People4DReposytoryClassLibrary
             }
             context.SaveChanges();
         }
+
+        public void UpdatePerson(int id, string newName, string newSurname, int newAge)
+        {
+            Person person = context.People.FirstOrDefault(p=> p.Id == id);
+            person.Name = newName;
+            person.Surname = newSurname;
+            person.Age = newAge;
+            context.SaveChanges(); 
+        }
     }
 }

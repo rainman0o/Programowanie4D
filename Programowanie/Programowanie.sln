@@ -111,6 +111,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "People4DTestConsoleApp", "P
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "People4DReposytoryClassLibrary", "People4DReposytoryClassLibrary\People4DReposytoryClassLibrary.csproj", "{DE6E557A-D276-4582-87A9-1EFEFD605255}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PeopleDatabaseMauiApp", "PeopleDatabaseMauiApp\PeopleDatabaseMauiApp.csproj", "{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -554,6 +556,19 @@ Global
 		{DE6E557A-D276-4582-87A9-1EFEFD605255}.Release|x64.Build.0 = Release|Any CPU
 		{DE6E557A-D276-4582-87A9-1EFEFD605255}.Release|x86.ActiveCfg = Release|Any CPU
 		{DE6E557A-D276-4582-87A9-1EFEFD605255}.Release|x86.Build.0 = Release|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Debug|x64.Build.0 = Debug|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Debug|x86.Build.0 = Debug|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Release|x64.ActiveCfg = Release|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Release|x64.Build.0 = Release|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Release|x86.ActiveCfg = Release|Any CPU
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -609,6 +624,7 @@ Global
 		{967E9846-2616-4AE6-844C-A75FD96DB972} = {BB9F291A-903A-4221-B56D-BC94655CB376}
 		{C31ED869-F9D6-4307-8B15-CD39663396D3} = {DAF51317-8447-476A-A914-DE587DDD60BF}
 		{DE6E557A-D276-4582-87A9-1EFEFD605255} = {DAF51317-8447-476A-A914-DE587DDD60BF}
+		{CFA0E1C2-4434-4827-86F9-06CCCC640B3C} = {DAF51317-8447-476A-A914-DE587DDD60BF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F824369-F9EF-410C-B079-B4B671EBB056}
