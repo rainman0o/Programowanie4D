@@ -1,7 +1,9 @@
 ﻿using People4DReposytoryClassLibrary;
-using People4DReposytoryClassLibrary.Models;
+using People4DReposytoryClassLibrary.DTOs;
+using PeopleDatabaseMauiApp.ViewModelModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,28 +13,32 @@ namespace PeopleDatabaseMauiApp
 	internal class MainViewModel : BindableObject
 	{
 		PeopleReposytory peopleReposytory = new PeopleReposytory();
+ 
 
-		private Command getAllPeopleCommand;
-		public Command GetAllPeopleCommand
-		{
-			get
-			{
-				if (getAllPeopleCommand == null)
-				{
-					getAllPeopleCommand = new Command(
-						() =>
-						{
-							List<Person> people = peopleReposytory.GetAllPeople();
-							AllPeopleList = people;
-						}
-						);
-				}
-				return getAllPeopleCommand;
-			}
-			set { getAllPeopleCommand = value; }
-		}
+        public ObservableCollection<Person> People { get; set; } = new ObservableCollection<Person> ();
 
-		private List<Person> allPeopleList;
+
+        private Command? refreshPeopleCommand = null;
+        public Command RefreshPeopleCommand
+        {
+            get
+            {
+                if (refreshPeopleCommand == null)
+                    refreshPeopleCommand = new Command(
+                        () =>
+                        {
+                            People.Clear();
+                            foreach (PersonDTO person in peopleReposytory.GetAllPeopleDTO())
+                            {
+                                People.Add(new Person() { Id = person.Id, Name = person.Name, Surname = person.Surname, Age = person.Age, City = person.City });
+                            }
+                        }
+                        );
+                return refreshPeopleCommand;
+            }
+        }
+
+        private List<Person> allPeopleList;
 		public List<Person> AllPeopleList
 		{
 			get { return allPeopleList; }
@@ -49,9 +55,7 @@ namespace PeopleDatabaseMauiApp
                     Id = selectedPerson.Id,
                     Name = selectedPerson.Name,
                     Surname = selectedPerson.Surname,
-                    Address = selectedPerson.Address,
-                    Age = selectedPerson.Age,
-                    AddressId = selectedPerson.AddressId
+                    Age = selectedPerson.Age
                 };
                 OnPropertyChanged();
 			}
@@ -80,7 +84,12 @@ namespace PeopleDatabaseMauiApp
                         SelectedPersonCopy.Name,
                         SelectedPersonCopy.Surname,
                         SelectedPersonCopy.Age);
-					});
+
+						selectedPerson.Id = selectedPersonCopy.Id;
+                        SelectedPerson.Name = SelectedPersonCopy.Name;
+                        SelectedPerson.Surname = SelectedPersonCopy.Surname;
+						selectedPerson.Age = SelectedPersonCopy.Age;	
+                    });
                 }
                 return updatePerson;
 			}

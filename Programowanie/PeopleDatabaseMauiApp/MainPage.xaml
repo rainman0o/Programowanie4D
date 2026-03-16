@@ -16,12 +16,12 @@
             <Button
                 x:Name="getPeople"
                 Text="Wyswietl wszyskich ludzi" 
-                Command ="{Binding GetAllPeopleCommand}"
+                Command ="{Binding RefreshPeopleCommand}"
                 SemanticProperties.Hint="Counts the number of times you click"
                 HorizontalOptions="Fill" />
             <Label Text="LISTA OSÓB"
                    FontSize="Large"/>
-            <CollectionView ItemsSource="{Binding AllPeopleList}"
+            <CollectionView ItemsSource="{Binding People}"
                             SelectedItem="{Binding SelectedPerson}"
                             SelectionMode="Single">
                 <CollectionView.ItemTemplate>

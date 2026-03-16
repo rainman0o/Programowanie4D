@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using People4DReposytoryClassLibrary.DTOs;
 using People4DReposytoryClassLibrary.Models;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,17 @@ namespace People4DReposytoryClassLibrary
         public List<Person> GetAllPeople()
         {
             return context.People.AsNoTracking().OrderBy(p => p.Name).ThenBy(p => p.Surname).ToList();
+        }
+
+        public List<PersonDTO> GetAllPeopleDTO()
+        {
+            return context.People
+                .AsNoTracking()
+                .Include(p => p.Address)
+                .OrderBy(p => p.Name)
+                .ThenBy(p => p.Surname)
+                .Select(p => new PersonDTO() { Id = p.Id, Name = p.Name, Surname = p.Surname, Age = p.Age, City = (p.Address != null ? p.Address.City : "") })
+                .ToList();
         }
         //U - update
         public void UpdateName(int id, string newName)
