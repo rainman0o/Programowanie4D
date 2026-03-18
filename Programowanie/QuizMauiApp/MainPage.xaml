@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizMauiApp.MainPage"
+             xmlns:local ="clr-namespace:QuizMauiApp">
+
+    <ContentPage.BindingContext>
+        <local:MainVievModel/>
+    </ContentPage.BindingContext>
+    
+    <ScrollView>
+        <VerticalStackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+            <Label Text="Numer Pytania"
+                   FontSize="50"
+                   BackgroundColor="LightGreen"
+                   HorizontalOptions="Center"/>
+            <Label Text="{Binding CurrentQuestion.Id}"
+                   FontSize="50"
+                   BackgroundColor="LightSteelBlue"
+                   HorizontalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"
+                         Margin="20"
+                         HorizontalOptions="Center"
+                         Background="Bisque">
+                <Label Text="{Binding CurrentQuestion.QuestionText}"
+                       TextColor="DarkViolet"
+                       FontSize="100"/>
+                
+                <Label Text="Empty"
+                       Background="Aquamarine"
+                       TextColor="DarkViolet"
+                       FontSize="100"
+                       Margin="20, 20,20,20"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Button Text="SPRAWDZ"
+                        Margin="20,20,20,20"
+                        BackgroundColor="Black"
+                        TextColor="White"/>
+                <Button Text="NEXT"
+                        Margin="20,20,20,20"
+                        BackgroundColor="Black"
+                        TextColor="White"/>
+            </StackLayout>
+            <StackLayout Orientation="Vertical"
+                         HorizontalOptions="Center">
+                <Label Text="Liczba poprawnych odpowiedzi:"
+                       FontSize="20"
+                       TextColor="Green"/>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
