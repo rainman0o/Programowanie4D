@@ -20,5 +20,15 @@ namespace QuizReposytoryClassLibrary
         {
             return context.Questions.Where(p => p.Id == currentQuestionId).Select(q => new QuestionDTO(){Id = q.Id, QuestionText = q.QuestionText}).First();
         }
+
+        public List<AnswersDTO> GetCurrentAnswers(int currentQuestionId)
+        {
+            return context.Answers.Where(a => a.QuestionId == currentQuestionId).Select(a => new AnswersDTO() { Id = a.Id,
+                AnswerText = a.AnswerText,
+                IsCorrect = a.IsCorrect,
+                QuestionId = a.QuestionId}).ToList();
+        }
+
+
     }
 }

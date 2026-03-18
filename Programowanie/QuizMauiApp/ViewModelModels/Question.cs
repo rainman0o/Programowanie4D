@@ -20,7 +20,7 @@ namespace QuizMauiApp.ViewModelModels
         public string QuestionText
         {
             get { return questionText; }
-            set { questionText = value; }
+            set { questionText = value; OnPropertyChanged(); }
         }
 
 

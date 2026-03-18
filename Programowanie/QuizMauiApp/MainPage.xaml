@@ -28,27 +28,39 @@
                 <Label Text="{Binding CurrentQuestion.QuestionText}"
                        TextColor="DarkViolet"
                        FontSize="100"/>
-                
-                <Label Text="Empty"
-                       Background="Aquamarine"
-                       TextColor="DarkViolet"
-                       FontSize="100"
-                       Margin="20, 20,20,20"/>
+
+                <StackLayout BindableLayout.ItemsSource="{Binding CurrentAnswers}"
+                                RadioButtonGroup.GroupName="answers"
+                                RadioButtonGroup.SelectedValue="{Binding SelectedAnswer}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <HorizontalStackLayout Spacing="10">
+                                <RadioButton Value="{Binding .}"/>
+                                <Label Text="{Binding AnswerText}"/>
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center">
                 <Button Text="SPRAWDZ"
                         Margin="20,20,20,20"
                         BackgroundColor="Black"
-                        TextColor="White"/>
+                        TextColor="White"
+                        Command="{Binding CheckAnswer}"/>
+                
                 <Button Text="NEXT"
                         Margin="20,20,20,20"
                         BackgroundColor="Black"
                         TextColor="White"/>
             </StackLayout>
-            <StackLayout Orientation="Vertical"
+            <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center">
                 <Label Text="Liczba poprawnych odpowiedzi:"
+                       FontSize="20"
+                       TextColor="Green"/>
+                <Label Text="{Binding AmmountOfGoodAnswers}"
                        FontSize="20"
                        TextColor="Green"/>
             </StackLayout>
