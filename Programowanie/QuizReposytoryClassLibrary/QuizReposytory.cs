@@ -28,7 +28,10 @@ namespace QuizReposytoryClassLibrary
                 IsCorrect = a.IsCorrect,
                 QuestionId = a.QuestionId}).ToList();
         }
-
+        public Question GetLastId()
+        {
+            return context.Questions.OrderByDescending(x => x.Id).FirstOrDefault();
+        }
 
     }
 }

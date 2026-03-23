@@ -5,7 +5,7 @@
              xmlns:local ="clr-namespace:QuizMauiApp">
 
     <ContentPage.BindingContext>
-        <local:MainVievModel/>
+        <local:MainViewModel/>
     </ContentPage.BindingContext>
     
     <ScrollView>
@@ -31,7 +31,8 @@
 
                 <StackLayout BindableLayout.ItemsSource="{Binding CurrentAnswers}"
                                 RadioButtonGroup.GroupName="answers"
-                                RadioButtonGroup.SelectedValue="{Binding SelectedAnswer}">
+                                RadioButtonGroup.SelectedValue="{Binding SelectedAnswer}"
+                                IsEnabled="{Binding EnableOrDisableAnswers}">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <HorizontalStackLayout Spacing="10">
@@ -53,7 +54,8 @@
                 <Button Text="NEXT"
                         Margin="20,20,20,20"
                         BackgroundColor="Black"
-                        TextColor="White"/>
+                        TextColor="White"
+                        Command="{Binding NextQuestion}"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal"
                          HorizontalOptions="Center">
@@ -64,6 +66,8 @@
                        FontSize="20"
                        TextColor="Green"/>
             </StackLayout>
+            <Label Text="{Binding IncorectAnswer}" TextColor="Red"
+                   HorizontalOptions="Center"/>
         </VerticalStackLayout>
     </ScrollView>
 
