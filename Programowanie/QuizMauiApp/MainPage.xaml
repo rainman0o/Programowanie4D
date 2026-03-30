@@ -1,4 +1,125 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizMauiApp.MainPage"
+             xmlns:local="clr-namespace:QuizMauiApp"
+             BackgroundColor="#F5F5F5">
+
+    <ContentPage.BindingContext>
+        <local:MainViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- HEADER -->
+            <Frame BackgroundColor="#4CAF50"
+                   CornerRadius="15"
+                   Padding="15"
+                   HasShadow="True">
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Label Text="Pytanie "
+                           FontSize="22"
+                           TextColor="White"/>
+                    <Label Text="{Binding CurrentQuestion.Id}"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- QUESTION CARD -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="15"
+                   Padding="20"
+                   HasShadow="True">
+
+                <Label Text="{Binding CurrentQuestion.QuestionText}"
+                       FontSize="24"
+                       TextColor="#333"
+                       HorizontalTextAlignment="Center"/>
+            </Frame>
+
+            <!-- ANSWERS -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="15"
+                   Padding="15"
+                   HasShadow="True">
+
+                <StackLayout BindableLayout.ItemsSource="{Binding CurrentAnswers}"
+                             RadioButtonGroup.GroupName="answers"
+                             RadioButtonGroup.SelectedValue="{Binding SelectedAnswer}"
+                             IsEnabled="{Binding EnableOrDisableAnswers}"
+                             Spacing="12">
+
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Frame CornerRadius="10"
+                                   Padding="10"
+                                   BorderColor="#DDD">
+
+                                <HorizontalStackLayout Spacing="10">
+                                    <RadioButton Value="{Binding .}" />
+                                    <Label Text="{Binding AnswerText}"
+                                           FontSize="18"
+                                           VerticalOptions="Center"
+                                           TextColor="{Binding Color}"/>
+                                </HorizontalStackLayout>
+
+                            </Frame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+
+            </Frame>
+
+            <!-- BUTTONS -->
+            <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+
+                <Button Text="Sprawdź"
+                        Command="{Binding CheckAnswer}"
+                        BackgroundColor="#2196F3"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="15,10"/>
+
+                <Button Text="Następne"
+                        Command="{Binding NextQuestion}"
+                        BackgroundColor="#FF9800"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Padding="15,10"/>
+            </HorizontalStackLayout>
+
+            <!-- SCORE -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="15"
+                   Padding="15"
+                   HasShadow="True">
+
+                <HorizontalStackLayout HorizontalOptions="Center">
+                    <Label Text="Poprawne odpowiedzi: "
+                           FontSize="18"
+                           TextColor="#4CAF50"/>
+                    <Label Text="{Binding AmmountOfGoodAnswers}"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#4CAF50"/>
+                </HorizontalStackLayout>
+
+            </Frame>
+
+            <!-- ERROR -->
+            <Label Text="{Binding IncorectAnswer}"
+                   TextColor="Red"
+                   FontSize="16"
+                   HorizontalOptions="Center"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+    <!--<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QuizMauiApp.MainPage"
@@ -18,7 +139,8 @@
                    HorizontalOptions="Center"/>
             <Label Text="{Binding CurrentQuestion.Id}"
                    FontSize="50"
-                   BackgroundColor="LightSteelBlue"
+                   BackgroundColor="LightGreen"
+                   
                    HorizontalOptions="Center"/>
             </StackLayout>
             <StackLayout Orientation="Vertical"
@@ -37,7 +159,8 @@
                         <DataTemplate>
                             <HorizontalStackLayout Spacing="10">
                                 <RadioButton Value="{Binding .}"/>
-                                <Label Text="{Binding AnswerText}"/>
+                                <Label Text="{Binding AnswerText}"
+                                       TextColor="{Binding Color }"/>
                             </HorizontalStackLayout>
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
@@ -71,4 +194,5 @@
         </VerticalStackLayout>
     </ScrollView>
 
-</ContentPage>
+</ContentPage>-->
+    

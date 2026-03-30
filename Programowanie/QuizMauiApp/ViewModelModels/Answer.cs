@@ -36,5 +36,12 @@ namespace QuizMauiApp.ViewModelModels
 			set { questionId = value; OnPropertyChanged(); }
 		}
 
+		private string color;
+
+		public string Color
+		{
+			get { return color; }
+			set { color = value; OnPropertyChanged(); }
+		}
 	}
 }

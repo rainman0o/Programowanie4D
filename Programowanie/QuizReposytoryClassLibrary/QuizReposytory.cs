@@ -18,7 +18,7 @@ namespace QuizReposytoryClassLibrary
 
         public QuestionDTO GetCurrentQuestion(int currentQuestionId)
         {
-            return context.Questions.Where(p => p.Id == currentQuestionId).Select(q => new QuestionDTO(){Id = q.Id, QuestionText = q.QuestionText}).First();
+            return context.Questions.OrderBy(q => q.Id).Where(q => q.Id >= currentQuestionId).Select(q => new QuestionDTO(){Id = q.Id, QuestionText = q.QuestionText}).First();
         }
 
         public List<AnswersDTO> GetCurrentAnswers(int currentQuestionId)
@@ -28,10 +28,10 @@ namespace QuizReposytoryClassLibrary
                 IsCorrect = a.IsCorrect,
                 QuestionId = a.QuestionId}).ToList();
         }
-        public Question GetLastId()
+       
+        public QuestionDTO GetLastQuestion()
         {
-            return context.Questions.OrderByDescending(x => x.Id).FirstOrDefault();
+            return context.Questions.OrderBy(q => q.Id).Select(q => new QuestionDTO() { Id = q.Id, QuestionText = q.QuestionText }).Last();
         }
-
     }
 }

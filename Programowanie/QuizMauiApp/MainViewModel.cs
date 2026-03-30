@@ -20,7 +20,14 @@ namespace QuizMauiApp
 			set { currentQuestion = value; OnPropertyChanged(); }
 		}
 
-		private ObservableCollection<Answer> currentAnswers;
+        private Question lastQuestion;
+        public Question LastQuestion
+        {
+            get { return lastQuestion; }
+            set { lastQuestion = value; OnPropertyChanged(); }
+        }
+
+        private ObservableCollection<Answer> currentAnswers;
         public ObservableCollection<Answer> CurrentAnswers
         {
 			get { return currentAnswers; }
@@ -35,7 +42,7 @@ namespace QuizMauiApp
 			set { selectedAnswer = value; OnPropertyChanged(); }
 		}
 
-		private Command checkAnswer;
+        private Command checkAnswer;
 		public Command CheckAnswer
 		{
 			get {
@@ -56,12 +63,17 @@ namespace QuizMauiApp
                                 {
                                     AmmountOfGoodAnswers++;
                                     EnableOrDisableAnswers = false;
+                                    IncorectAnswer = " ";
+                                    selectedAnswer.Color = "Green";
+                                    
                                 }
                             }
                             else if (selectedAnswer.IsCorrect == false)
                             {
                                 IncorectAnswer = "ZłA ODPOWIEDZ!";
                                 EnableOrDisableAnswers = false;
+                                selectedAnswer.Color = "Red";
+                                currentAnswers.First(a => a.IsCorrect).Color = "Green";
                             }
                         }						              
                     });
@@ -81,15 +93,22 @@ namespace QuizMauiApp
                     nextQuestion = nextQuestion = new Command(
                     () =>
                     {
-						if(currentQuestion.Id < quizReposytory.GetLastId())
-						{
+                        if (currentQuestion.Id < lastQuestion.Id && selectedAnswer != null)
+                        {
                             whichQuestionAndAnswer++;
                             SetAnswerAndQuestion(whichQuestionAndAnswer);
                             EnableOrDisableAnswers = true;
                             IncorectAnswer = "";
                             SelectedAnswer = null;
                         }
-					
+                        else if(currentQuestion.Id > lastQuestion.Id)
+                        {
+                            IncorectAnswer = "koniec pytań";
+                        }
+                        else
+                        {
+                            IncorectAnswer = "Podaj odpowiedz!";
+                        }
                     });
                 }
                  return nextQuestion; }
@@ -136,8 +155,14 @@ namespace QuizMauiApp
             List<AnswersDTO> answersDTO = quizReposytory.GetCurrentAnswers(whichQuestionAndAnswerNow);
             foreach (AnswersDTO answer in answersDTO)
             {
-                CurrentAnswers.Add(new Answer() { AnswerText = answer.AnswerText, IsCorrect = answer.IsCorrect, Id = answer.Id, QuestionId = answer.QuestionId });
+                CurrentAnswers.Add(new Answer() { AnswerText = answer.AnswerText, IsCorrect = answer.IsCorrect, Id = answer.Id, QuestionId = answer.QuestionId, Color = "White" });
             }
+        }
+
+        public void SetLastQuestion()
+        {
+            QuestionDTO lastQuestionDto = quizReposytory.GetLastQuestion();
+            LastQuestion = new Question() { Id = lastQuestionDto.Id, QuestionText = lastQuestionDto.QuestionText };
         }
 		public MainViewModel()
         {
@@ -145,8 +170,8 @@ namespace QuizMauiApp
 			AmmountOfGoodAnswers = 0;
 			EnableOrDisableAnswers = true;
             IncorectAnswer = "";
-
 			SetAnswerAndQuestion(whichQuestionAndAnswer);
+            SetLastQuestion();
         }
     }
 }
