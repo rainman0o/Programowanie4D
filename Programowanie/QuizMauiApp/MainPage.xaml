@@ -11,8 +11,7 @@
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
-
-            <!-- HEADER -->
+            
             <Frame BackgroundColor="#4CAF50"
                    CornerRadius="15"
                    Padding="15"
@@ -28,7 +27,6 @@
                 </HorizontalStackLayout>
             </Frame>
 
-            <!-- QUESTION CARD -->
             <Frame BackgroundColor="White"
                    CornerRadius="15"
                    Padding="20"
@@ -40,7 +38,6 @@
                        HorizontalTextAlignment="Center"/>
             </Frame>
 
-            <!-- ANSWERS -->
             <Frame BackgroundColor="White"
                    CornerRadius="15"
                    Padding="15"
@@ -73,7 +70,6 @@
 
             </Frame>
 
-            <!-- BUTTONS -->
             <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
 
                 <Button Text="Sprawdź"
@@ -91,7 +87,6 @@
                         Padding="15,10"/>
             </HorizontalStackLayout>
 
-            <!-- SCORE -->
             <Frame BackgroundColor="White"
                    CornerRadius="15"
                    Padding="15"
@@ -109,8 +104,7 @@
 
             </Frame>
 
-            <!-- ERROR -->
-            <Label Text="{Binding IncorectAnswer}"
+            <Label Text="{Binding Notification}"
                    TextColor="Red"
                    FontSize="16"
                    HorizontalOptions="Center"/>

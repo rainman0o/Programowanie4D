@@ -35,7 +35,6 @@ namespace QuizMauiApp
 		}
 
 		private Answer selectedAnswer;
-
 		public Answer SelectedAnswer
 		{
 			get { return selectedAnswer; }
@@ -53,7 +52,7 @@ namespace QuizMauiApp
                     {
                         if (selectedAnswer == null)
                         {
-                            IncorectAnswer = "Podaj odpowiedz!";
+                            Notification = "Podaj odpowiedz!";
                         }
 						else if(selectedAnswer != null)
 						{
@@ -63,14 +62,14 @@ namespace QuizMauiApp
                                 {
                                     AmmountOfGoodAnswers++;
                                     EnableOrDisableAnswers = false;
-                                    IncorectAnswer = " ";
+                                    Notification = " ";
                                     selectedAnswer.Color = "Green";
                                     
                                 }
                             }
                             else if (selectedAnswer.IsCorrect == false)
                             {
-                                IncorectAnswer = "ZłA ODPOWIEDZ!";
+                                Notification = "ZłA ODPOWIEDZ!";
                                 EnableOrDisableAnswers = false;
                                 selectedAnswer.Color = "Red";
                                 currentAnswers.First(a => a.IsCorrect).Color = "Green";
@@ -95,19 +94,15 @@ namespace QuizMauiApp
                     {
                         if (currentQuestion.Id < lastQuestion.Id && selectedAnswer != null)
                         {
-                            whichQuestionAndAnswer++;
-                            SetAnswerAndQuestion(whichQuestionAndAnswer);
-                            EnableOrDisableAnswers = true;
-                            IncorectAnswer = "";
-                            SelectedAnswer = null;
+                            SetDefaultSettingsForQuestion();
                         }
                         else if(currentQuestion.Id > lastQuestion.Id)
                         {
-                            IncorectAnswer = "koniec pytań";
+                            Notification = "koniec pytań";
                         }
                         else
                         {
-                            IncorectAnswer = "Podaj odpowiedz!";
+                            Notification = "Podaj odpowiedz!";
                         }
                     });
                 }
@@ -129,17 +124,15 @@ namespace QuizMauiApp
 			set { ammountOfGoodAnswers = value ;OnPropertyChanged(); }
 		}
 
-		private string incorectAnsewer;
-
-		public string IncorectAnswer
+		private string notification;
+		public string Notification
         {
-			get { return incorectAnsewer; }
-			set { incorectAnsewer = value; OnPropertyChanged(); }
+			get { return notification; }
+			set { notification = value; OnPropertyChanged(); }
 		}
 
 
 		private bool enableOrDisableAnswers;
-
 		public bool EnableOrDisableAnswers
         {
 			get { return enableOrDisableAnswers; }
@@ -164,12 +157,22 @@ namespace QuizMauiApp
             QuestionDTO lastQuestionDto = quizReposytory.GetLastQuestion();
             LastQuestion = new Question() { Id = lastQuestionDto.Id, QuestionText = lastQuestionDto.QuestionText };
         }
-		public MainViewModel()
+
+        public void SetDefaultSettingsForQuestion()
+        {
+            whichQuestionAndAnswer++;
+            SetAnswerAndQuestion(whichQuestionAndAnswer);
+            EnableOrDisableAnswers = true;
+            Notification = "";
+            SelectedAnswer = null;
+        }
+
+        public MainViewModel()
         {
 			WhichQuestionAndAnswer = 1;
 			AmmountOfGoodAnswers = 0;
 			EnableOrDisableAnswers = true;
-            IncorectAnswer = "";
+            Notification = "";
 			SetAnswerAndQuestion(whichQuestionAndAnswer);
             SetLastQuestion();
         }

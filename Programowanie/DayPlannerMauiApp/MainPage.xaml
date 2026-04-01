@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DayPlannerMauiApp.MainPage"
+             xmlns:local ="clr-namespace:DayPlannerMauiApp">
+    <ContentPage.BindingContext>
+        <local:MainViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <Label
+                Text="PLANER"
+                FontSize="Large"
+                HorizontalOptions="Center"/>
+            <Label
+                Text="Wybierz date do wyświetlenia"
+                FontSize="Medium"
+                TextColor="Red"
+                HorizontalOptions="Center"/>
+            <StackLayout Orientation="Horizontal">
+
+                <Picker Title="ROK" ItemsSource="{Binding PlannedYears}" SelectedItem="{Binding}"/>
+                <Picker Title="MIESIAC" ItemsSource="{Binding PlannedMonths}" SelectedItem="{Binding}"/>
+                <Picker Title="DZIEN" ItemsSource="{Binding PlannedDays}" SelectedItem="{Binding}"/>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
