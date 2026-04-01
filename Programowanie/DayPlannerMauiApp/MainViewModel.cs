@@ -37,11 +37,37 @@ namespace DayPlannerMauiApp
             set { plannedDays = value; OnPropertyChanged(); }
         }
 
+        private int selectedYear;
+        public int SelectedYear
+        {
+            get { return selectedYear; }
+            set { selectedYear = value; OnPropertyChanged(); }
+        }
+
+        private int selectedMonth;
+        public int SelectedMonth
+        {
+            get { return selectedMonth; }
+            set { selectedMonth = value; OnPropertyChanged(); }
+        }
+
+        private int selectedDay;
+
+        public int SelectedDay
+        {
+            get { return selectedDay; }
+            set { selectedDay = value; OnPropertyChanged(); }
+        }
+
+
         public MainViewModel()
         {
             PlannedYears = dayPlannerRepoytory.GetPlannedYers();
-            PlannedMonths = dayPlannerRepoytory.GetPlannedMonths();
-            PlannedDays = dayPlannerRepoytory.GetPlannedDays();
+            SelectedYear = PlannedYears.First();
+            PlannedMonths = dayPlannerRepoytory.GetPlannedMonths(SelectedYear);
+            SelectedMonth = PlannedMonths.First();
+            PlannedDays = dayPlannerRepoytory.GetPlannedDays(SelectedYear, SelectedMonth);
+            SelectedDay = PlannedDays.First();  
         }
     }
 }

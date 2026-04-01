@@ -21,9 +21,9 @@
                 HorizontalOptions="Center"/>
             <StackLayout Orientation="Horizontal">
 
-                <Picker Title="ROK" ItemsSource="{Binding PlannedYears}" SelectedItem="{Binding}"/>
-                <Picker Title="MIESIAC" ItemsSource="{Binding PlannedMonths}" SelectedItem="{Binding}"/>
-                <Picker Title="DZIEN" ItemsSource="{Binding PlannedDays}" SelectedItem="{Binding}"/>
+                <Picker Title="ROK" ItemsSource="{Binding PlannedYears}" SelectedItem="{Binding SelectedYear}"/>
+                <Picker Title="MIESIAC" ItemsSource="{Binding PlannedMonths}" SelectedItem="{Binding  SelectetMonth}"/>
+                <Picker Title="DZIEN" ItemsSource="{Binding PlannedDays}" SelectedItem="{Binding  SelectedDay}"/>
             </StackLayout>
         </VerticalStackLayout>
     </ScrollView>

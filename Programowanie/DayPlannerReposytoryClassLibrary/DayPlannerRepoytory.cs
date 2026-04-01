@@ -27,14 +27,14 @@ namespace DayPlannerReposytoryClassLibrary
             return context.Plannerdays.Select(p => p.Year).ToList();
         }
 
-        public List<int> GetPlannedMonths()
+        public List<int> GetPlannedMonths(int selectedYear)
         {
-            return context.Plannerdays.Select(p => p.Month).ToList();
+            return context.Plannerdays.Where(p => p.Year == selectedYear).Select(p => p.Month).ToList();
         }
 
-        public List<int> GetPlannedDays()
+        public List<int> GetPlannedDays(int selectedYear, int selectedMonth)
         {
-            return context.Plannerdays.Select(p => p.Day).ToList();
+            return context.Plannerdays.Where(p => p.Year == selectedYear && p.Month == selectedMonth).Select(p => p.Day).ToList();
         }
 
     }
