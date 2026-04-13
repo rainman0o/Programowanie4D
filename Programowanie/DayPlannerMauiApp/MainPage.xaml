@@ -25,6 +25,22 @@
                 <Picker Title="MIESIAC" ItemsSource="{Binding PlannedMonths}" SelectedItem="{Binding  SelectetMonth}"/>
                 <Picker Title="DZIEN" ItemsSource="{Binding PlannedDays}" SelectedItem="{Binding  SelectedDay}"/>
             </StackLayout>
+            <Button Text="Odśwież listę"/>
+            <Label
+                 Text="NOWY PLAN"
+                 FontSize="Large"
+                 HorizontalOptions="Center"/>
+            <Label/>
+
+            <StackLayout Orientation="Horizontal">
+
+                <Picker Title="ROK" ItemsSource="{Binding NewPlanYear}" SelectedItem="{Binding SelectedNewPlanYear}"/>
+                <Picker Title="MIESIAC" ItemsSource="{Binding NewPlanMonth}" SelectedItem="{Binding SelectedNewPlanMonth}"/>
+                <Picker Title="DZIEN" ItemsSource="{Binding NewPlanDay}" SelectedItem="{Binding SelectedNewPlanDay}" />
+            </StackLayout>
+            <Label Text="Treść zadania" TextColor ="Blue" FontSize="Medium" />
+            <Entry Text="{Binding TaskContent}"/>
+            <Button Text="Dodaj Plan"/>  
         </VerticalStackLayout>
     </ScrollView>
 
