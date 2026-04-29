@@ -1,12 +1,12 @@
-﻿using System;
+﻿using DayPlannerMauiApp.MainViewModelModels;
+using DayPlannerReposytoryClassLibrary;
+using DayPlannerReposytoryClassLibrary.DTO;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DayPlannerReposytoryClassLibrary;
-using DayPlannerReposytoryClassLibrary.DTO;
-using DayPlannerMauiApp.MainViewModelModels;
-using System.Collections.ObjectModel;
 using System.Xml.Serialization;
 
 
@@ -46,7 +46,7 @@ namespace DayPlannerMauiApp
             {
                 selectedYear = value;
                 PlannedMonths = dayPlannerRepoytory.GetPlannedMonths(SelectedYear);
-                SelectedMonth = PlannedMonths.First();
+                SelectedMonth = PlannedMonths.FirstOrDefault();
                 OnPropertyChanged();
             }
         }
@@ -58,7 +58,7 @@ namespace DayPlannerMauiApp
             set {
                 selectedMonth = value;
                 PlannedDays = dayPlannerRepoytory.GetPlannedDays(SelectedYear, SelectedMonth);
-                SelectedDay = PlannedDays.First();
+                SelectedDay = PlannedDays.FirstOrDefault();
                 OnPropertyChanged(); 
             }
         }
@@ -87,7 +87,7 @@ namespace DayPlannerMauiApp
             set {
                 selectedNewPlanYear = value;
                 NewPlanMonth = GetMonthsForSelectedYear(selectedNewPlanYear);
-                SelectedNewPlanMonth = NewPlanMonth.First();
+                SelectedNewPlanMonth = NewPlanMonth.FirstOrDefault();
                 OnPropertyChanged();
                 }
         }
@@ -108,7 +108,7 @@ namespace DayPlannerMauiApp
             set {
                 selectedNewPlanMonth = value;
                 NewPlanDay= GetDaysForSelectedMonths(selectedNewPlanYear, selectedNewPlanMonth);
-                SelectedNewPlanDay = NewPlanDay.First();
+                SelectedNewPlanDay = NewPlanDay.FirstOrDefault();
                 OnPropertyChanged(); 
             }
         }
@@ -187,10 +187,76 @@ namespace DayPlannerMauiApp
             }
             return years;
         }
+
+        private Command addNewTask;
+        public Command AddNewTask
+        {
+            get {
+                if (addNewTask == null)
+                {
+                    addNewTask = addNewTask = new Command(
+                    () =>
+                    {
+                        if (TaskContent != null)
+                            dayPlannerRepoytory.AddNewTaskToDb(SelectedNewPlanYear, selectedNewPlanMonth, selectedNewPlanDay, TaskContent);
+                        else TaskContent = "podaj tresc";
+                    });
+                }
+                return addNewTask; }
+            set { addNewTask = value;}
+        }
+
+        
+        private Command refreshList;
+        public Command RefreshList
+        {
+            get {
+                if (refreshList == null)
+                {
+                    refreshList = refreshList = new Command(
+                    () =>
+                    {
+                        List<PlanDTO> taskToDo = dayPlannerRepoytory.GetPlansForSelectedId(SelectedYear, SelectedMonth, SelectedDay);
+                        Tasks = new();
+                        foreach (PlanDTO task in taskToDo)
+                        {
+                            Tasks.Add(new Plan { Id = task.Id, PlannerdayId = task.PlannerdayId, Text = task.Text, DeleteCommand = DeleteTask });
+                        }
+                    });
+                }
+                return  refreshList; }
+            set {  refreshList = value; OnPropertyChanged(); }
+        }
+
+        private ObservableCollection<Plan> tasks;
+
+        public ObservableCollection<Plan> Tasks
+        {
+            get { return tasks; }
+            set { tasks = value; OnPropertyChanged(); }
+        }
+
+        private Command deleteTask;
+        public Command DeleteTask
+        {
+            get {
+                if (deleteTask == null)
+                {
+                    deleteTask = deleteTask = new Command<Plan>(
+                    (p) =>
+                    {
+                        dayPlannerRepoytory.DeleteTask(p.Id);
+                        Tasks.Remove(p);
+                    });
+                }
+                return deleteTask; }
+            set { deleteTask = value; }
+        }
+
         public MainViewModel()
         {
             PlannedYears = dayPlannerRepoytory.GetPlannedYers();
-            SelectedYear = PlannedYears.First();
+            SelectedYear = PlannedYears.FirstOrDefault();
             NewPlanYear =  MakeYearsForPlans();
             SelectedNewPlanYear = newPlanYear.First();
         }

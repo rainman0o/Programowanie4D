@@ -22,10 +22,25 @@
             <StackLayout Orientation="Horizontal">
 
                 <Picker Title="ROK" ItemsSource="{Binding PlannedYears}" SelectedItem="{Binding SelectedYear}"/>
-                <Picker Title="MIESIAC" ItemsSource="{Binding PlannedMonths}" SelectedItem="{Binding  SelectetMonth}"/>
+                <Picker Title="MIESIAC" ItemsSource="{Binding PlannedMonths}" SelectedItem="{Binding SelectedMonth}"/>
                 <Picker Title="DZIEN" ItemsSource="{Binding PlannedDays}" SelectedItem="{Binding  SelectedDay}"/>
             </StackLayout>
-            <Button Text="Odśwież listę"/>
+
+            <CollectionView  ItemsSource="{Binding Tasks}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding Text}"/>
+                            <Button Text="Usun zadanie"
+                                    Command="{Binding DeleteCommand}"
+                                    CommandParameter="{Binding .}"/>
+                        </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Odśwież listę"
+                    Command="{Binding RefreshList}"/>
             <Label
                  Text="NOWY PLAN"
                  FontSize="Large"
@@ -40,7 +55,8 @@
             </StackLayout>
             <Label Text="Treść zadania" TextColor ="Blue" FontSize="Medium" />
             <Entry Text="{Binding TaskContent}"/>
-            <Button Text="Dodaj Plan"/>  
+            <Button Text="Dodaj Plan"
+                    Command="{Binding AddNewTask}"/>
         </VerticalStackLayout>
     </ScrollView>
 

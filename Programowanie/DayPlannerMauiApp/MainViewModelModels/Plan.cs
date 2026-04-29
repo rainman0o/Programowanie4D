@@ -30,5 +30,7 @@ namespace DayPlannerMauiApp.MainViewModelModels
 			set { plannerdayId = value; OnPropertyChanged(); }
 		}
 
-	}
+        public Command DeleteCommand { get; set; }
+
+    }
 }
