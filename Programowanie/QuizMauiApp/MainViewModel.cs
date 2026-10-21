@@ -53,6 +53,7 @@ namespace QuizMauiApp
                         if (selectedAnswer == null)
                         {
                             Notification = "Podaj odpowiedz!";
+                            NotificationIsSet = true;
                         }
 						else if(selectedAnswer != null)
 						{
@@ -62,17 +63,24 @@ namespace QuizMauiApp
                                 {
                                     AmmountOfGoodAnswers++;
                                     EnableOrDisableAnswers = false;
-                                    Notification = " ";
+                                    Notification = "";
+                                    NotificationIsSet = false;
                                     selectedAnswer.Color = "Green";
                                     
                                 }
                             }
                             else if (selectedAnswer.IsCorrect == false)
                             {
-                                Notification = "ZłA ODPOWIEDZ!";
+                                Notification = "ZłA ODPOWIEDŹ!";
+                                NotificationIsSet = true;
                                 EnableOrDisableAnswers = false;
                                 selectedAnswer.Color = "Red";
                                 currentAnswers.First(a => a.IsCorrect).Color = "Green";
+                            }
+                            else
+                            {
+                                Notification = "Koniec pytaań";
+                                NotificationIsSet = true;
                             }
                         }						              
                     });
@@ -95,14 +103,17 @@ namespace QuizMauiApp
                         if (currentQuestion.Id < lastQuestion.Id && selectedAnswer != null)
                         {
                             SetDefaultSettingsForQuestion();
+                            NotificationIsSet = false;
                         }
-                        else if(currentQuestion.Id > lastQuestion.Id)
+                        else if(currentQuestion.Id == lastQuestion.Id)
                         {
-                            Notification = "koniec pytań";
+                            Notification = "Koniec pytań";
+                            NotificationIsSet = true;
                         }
                         else
                         {
                             Notification = "Podaj odpowiedz!";
+                            NotificationIsSet = true;
                         }
                     });
                 }
@@ -131,8 +142,15 @@ namespace QuizMauiApp
 			set { notification = value; OnPropertyChanged(); }
 		}
 
+        private bool notificationIsSet;
+        public bool NotificationIsSet
+        {
+            get { return notificationIsSet; }
+            set { notificationIsSet = value; OnPropertyChanged(); }
+        }
 
-		private bool enableOrDisableAnswers;
+
+        private bool enableOrDisableAnswers;
 		public bool EnableOrDisableAnswers
         {
 			get { return enableOrDisableAnswers; }
@@ -163,6 +181,7 @@ namespace QuizMauiApp
             whichQuestionAndAnswer++;
             SetAnswerAndQuestion(whichQuestionAndAnswer);
             EnableOrDisableAnswers = true;
+            notificationIsSet = false;
             Notification = "";
             SelectedAnswer = null;
         }
@@ -172,8 +191,9 @@ namespace QuizMauiApp
 			WhichQuestionAndAnswer = 1;
 			AmmountOfGoodAnswers = 0;
 			EnableOrDisableAnswers = true;
+            NotificationIsSet = false;
             Notification = "";
-			SetAnswerAndQuestion(whichQuestionAndAnswer);
+            SetAnswerAndQuestion(whichQuestionAndAnswer);
             SetLastQuestion();
         }
     }

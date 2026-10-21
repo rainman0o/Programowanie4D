@@ -22,9 +22,5 @@ namespace QuizMauiApp.ViewModelModels
             get { return questionText; }
             set { questionText = value; OnPropertyChanged(); }
         }
-
-
-
-
     }
 }

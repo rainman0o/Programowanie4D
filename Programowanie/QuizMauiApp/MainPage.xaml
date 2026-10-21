@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="QuizMauiApp.MainPage"
              xmlns:local="clr-namespace:QuizMauiApp"
-             BackgroundColor="#F5F5F5">
+             BackgroundColor="AliceBlue">
 
     <ContentPage.BindingContext>
         <local:MainViewModel/>
@@ -11,54 +11,44 @@
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
-            
-            <Frame BackgroundColor="#4CAF50"
-                   CornerRadius="15"
-                   Padding="15"
-                   HasShadow="True">
-                <HorizontalStackLayout HorizontalOptions="Center">
-                    <Label Text="Pytanie "
-                           FontSize="22"
-                           TextColor="White"/>
-                    <Label Text="{Binding CurrentQuestion.Id}"
-                           FontSize="22"
-                           FontAttributes="Bold"
-                           TextColor="White"/>
-                </HorizontalStackLayout>
+            <Frame BackgroundColor="White">
+                <Frame BackgroundColor="MediumPurple" MaximumWidthRequest="800" CornerRadius="10">
+                    <HorizontalStackLayout HorizontalOptions="Center">
+                        <Label Text="Pytanie "
+                               FontSize="22"
+                               TextColor="White"/>
+                        <Label Text="{Binding CurrentQuestion.Id}"
+                               FontSize="22"
+                               TextColor="White"/>
+                    </HorizontalStackLayout>
+                </Frame>
             </Frame>
 
-            <Frame BackgroundColor="White"
-                   CornerRadius="15"
-                   Padding="20"
-                   HasShadow="True">
 
-                <Label Text="{Binding CurrentQuestion.QuestionText}"
-                       FontSize="24"
-                       TextColor="#333"
-                       HorizontalTextAlignment="Center"/>
+            <Frame BackgroundColor="White">
+                <Frame BackgroundColor="Blue" MaximumWidthRequest="400" CornerRadius="10">
+                    <Label Text="{Binding CurrentQuestion.QuestionText}"
+                           FontSize="22"
+                           TextColor="white"
+                           HorizontalOptions="Center"/>
+                </Frame>
             </Frame>
 
-            <Frame BackgroundColor="White"
-                   CornerRadius="15"
-                   Padding="15"
-                   HasShadow="True">
+            <Frame BackgroundColor="White">
 
                 <StackLayout BindableLayout.ItemsSource="{Binding CurrentAnswers}"
                              RadioButtonGroup.GroupName="answers"
                              RadioButtonGroup.SelectedValue="{Binding SelectedAnswer}"
                              IsEnabled="{Binding EnableOrDisableAnswers}"
-                             Spacing="12">
+                             >
 
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <Frame CornerRadius="10"
-                                   Padding="10"
-                                   BorderColor="#DDD">
-
-                                <HorizontalStackLayout Spacing="10">
+                            <Frame BackgroundColor="LightBlue" Margin="10" CornerRadius="10" MaximumWidthRequest="400">
+                                <HorizontalStackLayout >
                                     <RadioButton Value="{Binding .}" />
                                     <Label Text="{Binding AnswerText}"
-                                           FontSize="18"
+                                           FontSize="16"
                                            VerticalOptions="Center"
                                            TextColor="{Binding Color}"/>
                                 </HorizontalStackLayout>
@@ -70,123 +60,47 @@
 
             </Frame>
 
-            <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
-
-                <Button Text="Sprawdź"
-                        Command="{Binding CheckAnswer}"
-                        BackgroundColor="#2196F3"
-                        TextColor="White"
-                        CornerRadius="10"
-                        Padding="15,10"/>
-
-                <Button Text="Następne"
-                        Command="{Binding NextQuestion}"
-                        BackgroundColor="#FF9800"
-                        TextColor="White"
-                        CornerRadius="10"
-                        Padding="15,10"/>
-            </HorizontalStackLayout>
-
-            <Frame BackgroundColor="White"
-                   CornerRadius="15"
-                   Padding="15"
-                   HasShadow="True">
-
-                <HorizontalStackLayout HorizontalOptions="Center">
-                    <Label Text="Poprawne odpowiedzi: "
-                           FontSize="18"
-                           TextColor="#4CAF50"/>
-                    <Label Text="{Binding AmmountOfGoodAnswers}"
-                           FontSize="18"
-                           FontAttributes="Bold"
-                           TextColor="#4CAF50"/>
+            <Frame BackgroundColor="White">
+                <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+                    <Button Text="Sprawdź"
+                            Command="{Binding CheckAnswer}"
+                            BackgroundColor="DeepSkyBlue"
+                            FontSize="18"
+                            TextColor="White"
+                            CornerRadius="10"/>
+                    <Button Text="Następne"
+                            Command="{Binding NextQuestion}"
+                            BackgroundColor="DeepSkyBlue"
+                            FontSize="18"
+                            TextColor="White"
+                            CornerRadius="10"/>
                 </HorizontalStackLayout>
-
             </Frame>
 
-            <Label Text="{Binding Notification}"
-                   TextColor="Red"
-                   FontSize="16"
-                   HorizontalOptions="Center"/>
 
+
+            <Frame BackgroundColor="White">
+                <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                    <Frame BackgroundColor="LightGreen" CornerRadius="10">
+                        <StackLayout HorizontalOptions="Start" MaximumWidthRequest="200">
+                            <Label Text="Poprawne odpowiedzi: "
+                               FontSize="16"
+                               TextColor="white"/>
+                            <Label Text="{Binding AmmountOfGoodAnswers}"
+                               FontSize="12"
+                               TextColor="White"
+                                HorizontalOptions="Center"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame BackgroundColor="OrangeRed" CornerRadius="10" MaximumWidthRequest="200" HorizontalOptions="End" IsVisible="{Binding NotificationIsSet}">
+                        <Label Text="{Binding Notification}"
+                               TextColor="White"
+                               FontSize="16"
+                               VerticalTextAlignment="Center"/>
+                    </Frame>
+                </HorizontalStackLayout>
+            </Frame>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>
-    <!--<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="QuizMauiApp.MainPage"
-             xmlns:local ="clr-namespace:QuizMauiApp">
-
-    <ContentPage.BindingContext>
-        <local:MainViewModel/>
-    </ContentPage.BindingContext>
-    
-    <ScrollView>
-        <VerticalStackLayout>
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Center">
-            <Label Text="Numer Pytania"
-                   FontSize="50"
-                   BackgroundColor="LightGreen"
-                   HorizontalOptions="Center"/>
-            <Label Text="{Binding CurrentQuestion.Id}"
-                   FontSize="50"
-                   BackgroundColor="LightGreen"
-                   
-                   HorizontalOptions="Center"/>
-            </StackLayout>
-            <StackLayout Orientation="Vertical"
-                         Margin="20"
-                         HorizontalOptions="Center"
-                         Background="Bisque">
-                <Label Text="{Binding CurrentQuestion.QuestionText}"
-                       TextColor="DarkViolet"
-                       FontSize="100"/>
-
-                <StackLayout BindableLayout.ItemsSource="{Binding CurrentAnswers}"
-                                RadioButtonGroup.GroupName="answers"
-                                RadioButtonGroup.SelectedValue="{Binding SelectedAnswer}"
-                                IsEnabled="{Binding EnableOrDisableAnswers}">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <HorizontalStackLayout Spacing="10">
-                                <RadioButton Value="{Binding .}"/>
-                                <Label Text="{Binding AnswerText}"
-                                       TextColor="{Binding Color }"/>
-                            </HorizontalStackLayout>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </StackLayout>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Center">
-                <Button Text="SPRAWDZ"
-                        Margin="20,20,20,20"
-                        BackgroundColor="Black"
-                        TextColor="White"
-                        Command="{Binding CheckAnswer}"/>
-                
-                <Button Text="NEXT"
-                        Margin="20,20,20,20"
-                        BackgroundColor="Black"
-                        TextColor="White"
-                        Command="{Binding NextQuestion}"/>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="Center">
-                <Label Text="Liczba poprawnych odpowiedzi:"
-                       FontSize="20"
-                       TextColor="Green"/>
-                <Label Text="{Binding AmmountOfGoodAnswers}"
-                       FontSize="20"
-                       TextColor="Green"/>
-            </StackLayout>
-            <Label Text="{Binding IncorectAnswer}" TextColor="Red"
-                   HorizontalOptions="Center"/>
-        </VerticalStackLayout>
-    </ScrollView>
-
-</ContentPage>-->
-    
