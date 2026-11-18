@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KoscEgzaminMauiApp.MainPage"
+             x:Name="thisPage"
+             BindingContext="{x:Reference thisPage}">
+
+    <ScrollView>
+        <VerticalStackLayout
+                 BackgroundColor="#ED27C121"
+                 Padding="30,0"
+                 Spacing="25">
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Padding="10">
+                <ImageButton/>
+                <ImageButton/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout
+                HorizontalOptions="Center"
+                Padding="10">
+                <ImageButton/>
+                <ImageButton/>
+                <ImageButton/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+                Padding="10"
+                HorizontalOptions="Center">
+                <Button
+                    Text="Rzut"
+                    Padding="10"
+                    FontSize="40"
+                    BackgroundColor="#ED275021"
+                    Clicked="Button_Clicked"/>
+            </HorizontalStackLayout>
+            
+            <HorizontalStackLayout
+                  Padding="10"
+                  HorizontalOptions="Center">
+                <Label
+                    Text=""
+                    FontSize="40"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
