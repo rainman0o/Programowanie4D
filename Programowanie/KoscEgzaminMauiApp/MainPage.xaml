@@ -3,29 +3,42 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KoscEgzaminMauiApp.MainPage"
              x:Name="thisPage"
+             xmlns:converter ="clr-namespace:KoscEgzaminMauiApp.Converters"
              BindingContext="{x:Reference thisPage}">
+
+    <ContentPage.Resources>
+        <converter:KostkaImages x:Key="KostkaImages"/>
+    </ContentPage.Resources>
 
     <ScrollView>
         <VerticalStackLayout
                  BackgroundColor="#ED27C121"
                  Padding="30,0"
-                 Spacing="25">
+                 Spacing="25"
+                 >
+            
             <HorizontalStackLayout
                 HorizontalOptions="Center"
-                Padding="10">
-                <ImageButton/>
-                <ImageButton/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout
-                HorizontalOptions="Center"
-                Padding="10">
-                <ImageButton/>
-                <ImageButton/>
-                <ImageButton/>
+                BindableLayout.ItemsSource="{Binding DiceFirstRow}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <ImageButton Source="{Binding ImgId, Converter = {x:StaticResource KostkaImages}}" HeightRequest="150" Margin="10" Command="{Binding SwitchAvability}"/>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout
-                Padding="10"
+                 HorizontalOptions="Center"
+                 BindableLayout.ItemsSource="{Binding DiceSecondRow}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <ImageButton Source="{Binding ImgId, Converter = {x:StaticResource KostkaImages}}" HeightRequest="150" Margin="10" Command="{Binding SwitchAvability}"/>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout
+               
                 HorizontalOptions="Center">
                 <Button
                     Text="Rzut"
@@ -39,7 +52,7 @@
                   Padding="10"
                   HorizontalOptions="Center">
                 <Label
-                    Text=""
+                    Text="{Binding ThrowResult}"
                     FontSize="40"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
